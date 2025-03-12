@@ -1,11 +1,38 @@
 ## Docker commands used to build the application 
-# TODO: insert the docker build command
+docker build --file ./Dockerfile -t techtrends
 
 ## Docker commands used to run the application
-# TODO: insert the docker run command
+docker run -p 7111:3111 -d --name techtrends techtrends
 
 ## Docker commands used to get the application logs
-# TODO: insert the docker logs command
+docker logs techtrends
 
 ## Logs from the container running the TechTrends application
-# TODO: paste logs from the Docker container 
+ * Serving Flask app 'app' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+2025-03-12 00:10:06,322 -  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2025-03-12 00:10:06,322 -  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+2025-03-12 00:13:35,932 - 172.17.0.1 - - [12/Mar/2025 00:13:35] "GET / HTTP/1.1" 200 -
+2025-03-12 00:13:35,986 - 172.17.0.1 - - [12/Mar/2025 00:13:35] "GET /static/css/main.css HTTP/1.1" 200 -
+2025-03-12 00:13:44,024 - 172.17.0.1 - - [12/Mar/2025 00:13:44] "GET /healthz HTTP/1.1" 200 -
+2025-03-12 00:13:44,072 - 172.17.0.1 - - [12/Mar/2025 00:13:44] "GET /favicon.ico HTTP/1.1" 404 -
+2025-03-12 00:13:51,628 - 172.17.0.1 - - [12/Mar/2025 00:13:51] "GET /metrics HTTP/1.1" 200 -
+2025-03-12 00:13:51,664 - 172.17.0.1 - - [12/Mar/2025 00:13:51] "GET /favicon.ico HTTP/1.1" 404 -
+2025-03-12 00:14:00,334 - About Us page retrieved
+2025-03-12 00:14:00,336 - 172.17.0.1 - - [12/Mar/2025 00:14:00] "GET /about HTTP/1.1" 200 -
+2025-03-12 00:14:00,403 - 172.17.0.1 - - [12/Mar/2025 00:14:00] "GET /static/css/main.css HTTP/1.1" 304 -
+2025-03-12 00:14:02,658 - 172.17.0.1 - - [12/Mar/2025 00:14:02] "GET / HTTP/1.1" 200 -
+2025-03-12 00:14:02,725 - 172.17.0.1 - - [12/Mar/2025 00:14:02] "GET /static/css/main.css HTTP/1.1" 304 -
+2025-03-12 00:14:03,943 - Article "2020 CNCF Annual Report" retrieved
+2025-03-12 00:14:03,945 - 172.17.0.1 - - [12/Mar/2025 00:14:03] "GET /1 HTTP/1.1" 200 -
+2025-03-12 00:14:03,994 - 172.17.0.1 - - [12/Mar/2025 00:14:03] "GET /static/css/main.css HTTP/1.1" 304 -
+2025-03-12 00:14:07,875 - 172.17.0.1 - - [12/Mar/2025 00:14:07] "GET /create HTTP/1.1" 200 -
+2025-03-12 00:14:07,929 - 172.17.0.1 - - [12/Mar/2025 00:14:07] "GET /static/css/main.css HTTP/1.1" 304 -
+2025-03-12 00:14:18,522 - Article "Test" created
+2025-03-12 00:14:18,522 - 172.17.0.1 - - [12/Mar/2025 00:14:18] "POST /create HTTP/1.1" 302 -
+2025-03-12 00:14:18,535 - 172.17.0.1 - - [12/Mar/2025 00:14:18] "GET / HTTP/1.1" 200 -
+2025-03-12 00:14:18,589 - 172.17.0.1 - - [12/Mar/2025 00:14:18] "GET /static/css/main.css HTTP/1.1" 304 -
