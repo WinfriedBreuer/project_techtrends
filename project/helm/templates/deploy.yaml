@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: techtrends
+  name: techtrends
+  namespace: {{ .Values.namespace.name }}
+spec:
+  replicas: {{ .Values.replicaCount }} 
+  selector:
+    matchLabels:
+      app: techtrends
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: techtrends
+    spec:
+      containers:
+      - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        name: techtrends
+        resources:
+{{ toYaml .Values.resources | indent 12 }}          
+        ports:
+        - containerPort: {{ .Values.image.containerPort }}
+        livenessProbe:
+          httpGet:
+            path: {{ .Values.image.livenessProbePath }} # The path to check for the liveness probe
+            port: {{ .Values.image.containerPort }} # The port to check on
+        readinessProbe:
+          httpGet:
+            path: {{ .Values.image.readinessProbePath }} # The path to check for the readiness probe
+            port: {{ .Values.image.containerPort }} # The port to check on
+status: {}

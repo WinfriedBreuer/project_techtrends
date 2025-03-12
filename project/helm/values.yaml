@@ -1,0 +1,26 @@
+namespace:
+  name: techtrends
+
+replicaCount: 1
+
+image:
+  repository: techtrends
+  tag: latest
+  pullPolicy: IfNotPresent
+  containerPort: 3111
+  livenessProbePath: /healthz
+  readinessProbePath: /healthz
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 128Mi
+
+service:
+  type: ClusterIP
+  port: 4111
+  targetport: 3111
+  protocol: TCP
