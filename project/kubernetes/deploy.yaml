@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: techtrends
+  name: techtrends
+  namespace: sandbox
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techtrends
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: techtrends
+    spec:
+      containers:
+      - image: winfriedbreuer/techtrends:latest
+        imagePullPolicy: IfNotPresent
+        name: techtrends
+        resources:
+          limits:
+            memory: "128Mi" # Maximum memory allowed
+            cpu: "500m" # Maximum CPU allowed (200 milliCPU)
+          requests:
+            memory: "64Mi" # Initial memory request
+            cpu: "250m" # Initial CPU request
+        ports:
+        - containerPort: 3111
+        livenessProbe:
+          httpGet:
+            path: /healthz # The path to check for the liveness probe
+            port: 3111 # The port to check on
+        readinessProbe:
+          httpGet:
+            path: /healthz # The path to check for the readiness probe
+            port: 3111 # The port to check on
+status: {}
