@@ -27,9 +27,9 @@ spec:
         livenessProbe:
           httpGet:
             path: {{ .Values.image.livenessProbePath }} # The path to check for the liveness probe
-            port: {{ .Values.image.containerPort }} # The port to check on
+            port: {{ .Values.image.livenessProbePort }} # The port to check on
         readinessProbe:
           httpGet:
             path: {{ .Values.image.readinessProbePath }} # The path to check for the readiness probe
-            port: {{ .Values.image.containerPort }} # The port to check on
+            port: {{ .Values.image.readinessProbePort }} # The port to check on
 status: {}
