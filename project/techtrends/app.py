@@ -106,10 +106,22 @@ def create():
 
     return render_template('create.html')
 
+def setup_logging():
+    # Set up logging
+    # format =%(asctime)s - %(message)s  
+    log_format = '%(levelname)s:%(name)s:%(asctime)s, %(message)s'
+    logging.basicConfig(stream=sys.stderr, level=logging.DEBUG, format=log_format)
+    # Send logs to syserr
+    syserr_handler = logging.StreamHandler(sys.stdout)
+    syserr_handler.setFormatter(logging.Formatter(log_format))
+    syserr_handler.setLevel(logging.WARNING)
+    logging.getLogger().addHandler(syserr_handler)    
+
 # start the application on port 3111
 if __name__ == "__main__":
    
    #set up logging
-   logging.basicConfig(stream=sys.stdout, level=logging.DEBUG, format='%(asctime)s - %(message)s')
-
+   setup_logging()
+   
+   
    app.run(host='0.0.0.0', port='3111')
